@@ -3,3 +3,4 @@ venv
 
 # Ignorer le fichier .env.local
 .env.local
+env.local
