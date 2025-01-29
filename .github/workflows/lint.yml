@@ -20,13 +20,13 @@ jobs:
         pip install pylint black flake8 isort        
     - name: Flake8
       run: |
-        python -m flake8 predicat        
+        python -m flake8 app        
     - name: Linting with pylint
       run: |
         pylint $(git ls-files '*.py') --fail-under 5        
     - name: Formatting checks isort
       run: |
-        python -m isort --profile black --check predicat        
+        python -m isort --profile black --check app        
     - name: Formatting checks black
       run: 
-        python -m black --check predicat
+        python -m black --check app
