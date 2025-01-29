@@ -17,16 +17,17 @@ jobs:
     - name: Install Pylint Black Flake8 Isort
       run: |
         python -m pip install --upgrade pip
-        pip install pylint black flake8 isort        
+        pip install pylint black flake8 isort
+    - name: Formatting checks black
+      run: 
+        python -m black --check app --fail-under 5          
     - name: Flake8
       run: |
-        python -m flake8 app        
+        python -m flake8 app --fail-under 5         
     - name: Linting with pylint
       run: |
         pylint $(git ls-files '*.py') --fail-under 5        
     - name: Formatting checks isort
       run: |
-        python -m isort --profile black --check app        
-    - name: Formatting checks black
-      run: 
-        python -m black --check app
+        python -m isort --profile black --check app --fail-under 5          
+
