@@ -1,2 +1,4 @@
+"test de pylint"
+
 print("hello")
-var_pour_test = 0.001
+VAR_POUR_TEST = 0.001
