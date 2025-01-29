@@ -1,0 +1,5 @@
+pylint
+black
+flake8
+fastapi
+uvicorn
