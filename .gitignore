@@ -1,0 +1,5 @@
+# Ignorer le dossier venv
+venv
+
+# Ignorer le fichier .env.local
+.env.local
