@@ -29,23 +29,39 @@ class ItemClient:
         This method gives the whole items' list.
         """
         # Calling the API
-        req = requests.get(f"{self.__host}/item.json")
+        req = requests.get(f"{self.__host}/item.json", timeout=None)
 
         # Initialising the list and filling with the data
         all_items = []
         if req.status_code == 200:
             raw_types = req.json()["data"]
-            for item_id in raw_types:
+            for item in raw_types:
                 if (
-                    not "into" in raw_types[item_id]
-                    and raw_types[item_id]["gold"]["base"] != 0
-                    and raw_types[item_id]["gold"]["purchasable"]
+                    not "into" in raw_types[item]
+                    and raw_types[item]["gold"]["base"] != 0
+                    and raw_types[item]["gold"]["purchasable"]
                 ):
-                    all_items.append([int(item_id), raw_types[item_id]["name"]])
+                    name = raw_types[item]["name"]
+                    item_id = int(item)
+                    description = raw_types[item]["plaintext"]
+                    tags = raw_types[item]["tags"]
+                    stats = raw_types[item]["stats"]
+                    image = raw_types[item]["image"]
 
-        return sorted(all_items)
+                    i = {
+                        "name": name,
+                        "id": item_id,
+                        "description": description,
+                        "tags": tags,
+                        "stats": stats,
+                        "image": image,
+                    }
+
+                    all_items.append(i)
+
+        return all_items
 
 
 if __name__ == "__main__":
     item_list = ItemClient().get_all_items()
-    print(item_list)
+    print(item_list[0])

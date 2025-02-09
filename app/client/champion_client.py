@@ -8,9 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Charge un fichier local si présent
-local_env_path = ".env.local"
-if os.path.exists(local_env_path):
-    load_dotenv(dotenv_path=local_env_path, override=True)
+LOCAL_ENV_PATH = ".env.local"
+if os.path.exists(LOCAL_ENV_PATH):
+    load_dotenv(dotenv_path=LOCAL_ENV_PATH, override=True)
 
 
 class ChampionClient:
@@ -29,20 +29,36 @@ class ChampionClient:
         This method gives the whole champions' list.
         """
         # Calling the API
-        req = requests.get(f"{self.__host}/champion.json")
+        req = requests.get(f"{self.__host}/champion.json", timeout=None)
 
         # Initialising the list and filling with the data
         all_champions = []
         if req.status_code == 200:
             raw_types = req.json()["data"]
             for champ in raw_types:
-                all_champions.append(
-                    [raw_types[champ]["name"], int(raw_types[champ]["key"])]
-                )
+                name = raw_types[champ]["name"]
+                champ_id = int(raw_types[champ]["key"])
+                blurb = raw_types[champ]["blurb"]
+                tags = raw_types[champ]["tags"]
+                stats = raw_types[champ]["stats"]
+                info = raw_types[champ]["info"]
+                image = raw_types[champ]["image"]
 
-        return sorted(all_champions)
+                c = {
+                    "name": name,
+                    "id": champ_id,
+                    "blurb": blurb,
+                    "tags": tags,
+                    "stats": stats,
+                    "info": info,
+                    "image": image,
+                }
+
+                all_champions.append(c)
+
+        return all_champions
 
 
 if __name__ == "__main__":
     champ_list = ChampionClient().get_all_champs()
-    print(champ_list)
+    print(champ_list[0])
