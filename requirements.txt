@@ -6,3 +6,4 @@ uvicorn==0.34.0
 requests
 pytest==8.3.4
 selenium
+pydantic
