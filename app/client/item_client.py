@@ -8,9 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Charge un fichier local si présent
-local_env_path = ".env.local"
-if os.path.exists(local_env_path):
-    load_dotenv(dotenv_path=local_env_path, override=True)
+LOCAL_ENV_PATH = ".env.local"
+if os.path.exists(LOCAL_ENV_PATH):
+    load_dotenv(dotenv_path=LOCAL_ENV_PATH, override=True)
 
 
 class ItemClient:
@@ -37,7 +37,7 @@ class ItemClient:
             raw_types = req.json()["data"]
             for item in raw_types:
                 if (
-                    not "into" in raw_types[item]
+                    "into" not in raw_types[item]
                     and raw_types[item]["gold"]["base"] != 0
                     and raw_types[item]["gold"]["purchasable"]
                 ):
