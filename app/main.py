@@ -11,6 +11,7 @@ if os.path.exists(local_env_path):
     load_dotenv(dotenv_path=local_env_path, override=True)
 
 
+# test23'4
 def afficher_var_env():
     for key in os.environ:
         value = os.getenv(key)
