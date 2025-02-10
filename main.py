@@ -2,6 +2,8 @@ import os
 
 from dotenv import load_dotenv
 
+from app.service.champion_service import ChampionService
+
 # Charger le fichier principal
 load_dotenv()
 
@@ -32,4 +34,8 @@ def afficher_var_env():
         print(f"{key} : {value}")
 
 
-afficher_var_env()
+# afficher_var_env()
+
+if __name__ == "__main__":
+    champ_list = ChampionService().get_all_champs()
+    print(champ_list[0])
