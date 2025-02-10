@@ -33,6 +33,7 @@ class ChampionClient:
 
         # Initialising the list and filling with the datanzb
         all_champions = []
+        _ = "azeazeaeazeaeazeazeazeazeazeazeazeazeazeazeazeazazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeaze"
         if req.status_code == 200:
             raw_types = req.json()["data"]
             for champ in raw_types:
