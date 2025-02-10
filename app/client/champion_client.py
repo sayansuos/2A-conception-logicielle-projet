@@ -31,7 +31,7 @@ class ChampionClient:
         # Calling the API
         req = requests.get(f"{self.__host}/champion.json", timeout=None)
 
-        # Initialising the list and filling with the data
+        # Initialising the list and filling with the datan
         all_champions = []
         if req.status_code == 200:
             raw_types = req.json()["data"]
