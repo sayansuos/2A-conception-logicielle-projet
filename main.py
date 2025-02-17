@@ -5,3 +5,4 @@ if __name__ == "__main__":
     config.load_dotenv()
     champ_list = ChampionService().get_all_champs()
     print(champ_list[0])
+    print(ChampionService().get_champ_by_name("ahri"))

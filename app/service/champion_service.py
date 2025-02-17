@@ -37,3 +37,39 @@ class ChampionService:
             all_champs.append(champ)
 
         return all_champs
+
+    def get_champ_by_id(self, champ_id: int) -> Champion:
+        """
+        This method gives a champ by its id.
+        """
+        if not isinstance(champ_id, int):
+            return TypeError("The champ's id should be an int instance.")
+
+        wanted_champ = None
+
+        champs_list = self.get_all_champs()
+        for champ in champs_list:
+            if champ.id == champ_id:
+                wanted_champ = champ
+        if wanted_champ is None:
+            raise ValueError("This champ's id doesn't exist.")
+        else:
+            return wanted_champ
+
+    def get_champ_by_name(self, champ_name: str) -> Champion:
+        """
+        This method gives a champ by its id.
+        """
+        if not isinstance(champ_name, int):
+            return TypeError("The champ's id should be an str instance.")
+
+        wanted_champ = None
+
+        champs_list = self.get_all_champs()
+        for champ in champs_list:
+            if champ.name.upper() == champ_name.upper():
+                wanted_champ = champ
+        if wanted_champ is None:
+            raise ValueError("This champ's name doesn't exist.")
+        else:
+            return wanted_champ
