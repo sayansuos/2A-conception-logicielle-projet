@@ -1,4 +1,5 @@
 from app.client.champion_client import ChampionClient
+from app.client.role_client import RoleClient
 from app.models.champion import Champion
 
 
@@ -60,7 +61,7 @@ class ChampionService:
         """
         This method gives a champ by its id.
         """
-        if not isinstance(champ_name, int):
+        if not isinstance(champ_name, str):
             return TypeError("The champ's id should be an str instance.")
 
         wanted_champ = None
@@ -73,3 +74,9 @@ class ChampionService:
             raise ValueError("This champ's name doesn't exist.")
         else:
             return wanted_champ
+
+    def get_playrate(self, champ: Champion):
+        """
+        This methods gives the role of the champ.
+        """
+        return RoleClient().get_playrate_by_id(champ.id)
