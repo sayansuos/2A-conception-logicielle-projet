@@ -1,6 +1,6 @@
-class Champion:
+class Item:
     """
-    Représente un champion avec ses détails.
+    Représente un item avec ses détails.
 
     - **name**: Le nom du champion.
     - **title**: Le titre du champion.
@@ -14,23 +14,21 @@ class Champion:
     def __init__(
         self,
         name: str,
-        champ_id: int,
-        blurb: str,
+        item_id: int,
+        description: str,
         tags: list[str],
         stats: dict,
-        info: dict,
         image: str,
     ):
         """
         Builder
         """
-        self.name: str = name
-        self.id = champ_id
-        self.blurb = blurb
+        self.name = name
+        self.id = item_id
         self.tags = tags
         self.stats = stats
-        self.info = info
+        self.description = description
         self.image = image
 
     def __str__(self):
-        return f"[{self.id}] {self.name}"
+        return f"[{self.id}] {self.name} \n{self.stats}"
