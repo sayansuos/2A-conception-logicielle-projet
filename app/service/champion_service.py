@@ -37,8 +37,3 @@ class ChampionService:
             all_champs.append(champ)
 
         return all_champs
-
-
-if __name__ == "__main__":
-    champ_list = ChampionService().get_all_champs()
-    print(champ_list[0])

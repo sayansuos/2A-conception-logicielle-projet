@@ -2,15 +2,6 @@ import os
 from typing import List
 
 import requests
-from dotenv import load_dotenv
-
-# Charger le fichier principal
-load_dotenv()
-
-# Charge un fichier local si présent
-LOCAL_ENV_PATH = ".env.local"
-if os.path.exists(LOCAL_ENV_PATH):
-    load_dotenv(dotenv_path=LOCAL_ENV_PATH, override=True)
 
 
 class ChampionClient:
@@ -22,7 +13,7 @@ class ChampionClient:
         """
         Builder
         """
-        self.__host = os.environ["DATA_URL"]
+        self.__host = os.getenv("DATA_URL")
 
     def get_all_champs(self) -> List[str]:
         """
@@ -57,8 +48,3 @@ class ChampionClient:
                 all_champions.append(c)
 
         return all_champions
-
-
-if __name__ == "__main__":
-    champ_list = ChampionClient().get_all_champs()
-    print(champ_list[0])

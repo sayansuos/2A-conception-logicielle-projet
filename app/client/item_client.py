@@ -2,15 +2,6 @@ import os
 from typing import List
 
 import requests
-from dotenv import load_dotenv
-
-# Charger le fichier principal
-load_dotenv()
-
-# Charge un fichier local si présent
-LOCAL_ENV_PATH = ".env.local"
-if os.path.exists(LOCAL_ENV_PATH):
-    load_dotenv(dotenv_path=LOCAL_ENV_PATH, override=True)
 
 
 class ItemClient:
@@ -22,7 +13,7 @@ class ItemClient:
         """
         Builder
         """
-        self.__host = os.environ["DATA_URL"]
+        self.__host = os.getenv("DATA_URL")
 
     def get_all_items(self) -> List[str]:
         """
@@ -60,8 +51,3 @@ class ItemClient:
                     all_items.append(i)
 
         return all_items
-
-
-if __name__ == "__main__":
-    item_list = ItemClient().get_all_items()
-    print(item_list[0])
