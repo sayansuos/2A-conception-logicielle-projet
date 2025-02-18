@@ -1,10 +1,11 @@
 import sqlite3
 
 from app.config.reset_db import ResetDB
+from app.config.singleton import Singleton
 from app.models.user import User
 
 
-class UserDao:
+class UserDao(metaclass=Singleton):
     """
     This class contains all the methods required to access the
     database's users.

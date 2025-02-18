@@ -23,3 +23,5 @@ if __name__ == "__main__":
     UserService().login(pseudo="pseudo", pwd="mdp")
     UserService().delete_where_pseudo(pseudo="pseudobis")
     UserService().print_all_users()
+    ChampionService().create_all_champs()
+    ItemService().create_all_items()
