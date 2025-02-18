@@ -1,4 +1,5 @@
 from app.client.item_client import ItemClient
+from app.dao.item_dao import ItemDao
 from app.models.item import Item
 
 
@@ -79,3 +80,16 @@ class ItemService:
             raise ValueError("This item's name doesn't exist.")
         else:
             return wanted_item
+
+    def create_all_items(self) -> bool:
+        """
+        This method add all the items to the database.
+        """
+        items_list = self.get_all_items()
+        all_created = True
+        for item in items_list:
+            created = ItemDao().create(item=item)
+            if not created:
+                all_created = False
+
+        return all_created
