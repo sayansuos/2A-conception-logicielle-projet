@@ -34,4 +34,4 @@ class User:
         """
         if data is None:
             return None
-        return User(data[0], data[1], data[2], data[3])
+        return User(data[0], data[1], data[2])

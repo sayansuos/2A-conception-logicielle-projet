@@ -1,15 +1,17 @@
 -----------------------------------------------------
 -- User
 -----------------------------------------------------
+DROP TABLE IF EXISTS users_data;
 CREATE TABLE IF NOT EXISTS users_data (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     pseudo      TEXT,
-    mdp         VARCHAR
+    pwd         VARCHAR
 );
 
 ----------------------------------------------------
 -- Champions
 -----------------------------------------------------
+DROP TABLE IF EXISTS champs_data;
 CREATE TABLE IF NOT EXISTS champs_data (
     id     INTEGER PRIMARY KEY,
     name   TEXT
@@ -18,6 +20,7 @@ CREATE TABLE IF NOT EXISTS champs_data (
 -----------------------------------------------------
 -- Items
 -----------------------------------------------------
+DROP TABLE IF EXISTS items_data;
 CREATE TABLE IF NOT EXISTS items_data (
     id     INTEGER PRIMARY KEY,
     name   TEXT
@@ -26,6 +29,7 @@ CREATE TABLE IF NOT EXISTS items_data (
 -----------------------------------------------------
 -- Builds
 -----------------------------------------------------
+DROP TABLE IF EXISTS builds_data;
 CREATE TABLE IF NOT EXISTS builds_data (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     champ_id    INTEGER,
@@ -45,6 +49,7 @@ CREATE TABLE IF NOT EXISTS builds_data (
 -----------------------------------------------------
 -- User's builds
 -----------------------------------------------------
+DROP TABLE IF EXISTS users_builds_data;
 CREATE TABLE IF NOT EXISTS users_builds_data (
     user_id     INTEGER,
     build_id    INTEGER,
