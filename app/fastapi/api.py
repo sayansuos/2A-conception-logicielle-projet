@@ -2,8 +2,10 @@ from typing import List  # , Dict, Optional
 
 from fastapi import FastAPI, Path  # , Form, HTTPException
 from pydantic import BaseModel
-from service.champion_service import ChampionService
-from service.item_service import ItemService
+
+import app.config.charge_environnement as config
+from app.service.champion_service import ChampionService
+from app.service.item_service import ItemService
 
 # from typing import Annotated
 # from fastapi.responses import HTMLResponse
@@ -13,6 +15,7 @@ from service.item_service import ItemService
 
 # from service.user_service import UserService
 
+config.load_dotenv()
 
 # model pydantic
 
@@ -28,7 +31,7 @@ class Champion(BaseModel):
     tags: list[str]
     stats: dict
     info: dict
-    image: dict
+    image: str
 
 
 class Item(BaseModel):
@@ -41,7 +44,7 @@ class Item(BaseModel):
     description: str
     tags: list[str]
     stats: dict
-    image: dict
+    image: str
 
 
 """
