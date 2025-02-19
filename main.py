@@ -1,5 +1,6 @@
 import app.config.charge_environnement as config
 from app.config.reset_db import ResetDB
+from app.service.build_service import BuildService
 from app.service.champion_service import ChampionService
 from app.service.item_service import ItemService
 from app.service.user_service import UserService
@@ -55,3 +56,18 @@ if __name__ == "__main__":
     print(ChampionService().available_champs_by_role("JGL")[0])
     ChampionService().get_champ_by_name("ahri").show_image()
     ItemService().get_item_by_name("heartsteel").show_image()
+    champion = champ_list[5]
+    item1 = ItemService().get_all_items()[0]
+    item2 = ItemService().get_all_items()[1]
+    item3 = ItemService().get_all_items()[2]
+    item4 = ItemService().get_all_items()[3]
+    item5 = ItemService().get_all_items()[4]
+    build = BuildService().create(
+        champion=champion,
+        item1=item1,
+        item2=item2,
+        item3=item3,
+        item4=item4,
+        item5=item5,
+    )
+    print(build)
