@@ -14,6 +14,9 @@ class ItemClient:
         Builder
         """
         self.__host = os.getenv("DATA_URL")
+        self.__host_image = (
+            "https://ddragon.leagueoflegends.com/" + "cdn/15.3.1/img/item"
+        )
 
     def get_all_items(self) -> List[str]:
         """
@@ -37,7 +40,7 @@ class ItemClient:
                     description = raw_types[item]["plaintext"]
                     tags = raw_types[item]["tags"]
                     stats = raw_types[item]["stats"]
-                    image = raw_types[item]["image"]
+                    image = self.__host_image + "/" + str(item_id) + ".png"
 
                     i = {
                         "name": name,
