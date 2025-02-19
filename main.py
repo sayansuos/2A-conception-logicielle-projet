@@ -45,6 +45,10 @@ if __name__ == "__main__":
         )[0]
     )
     print(ChampionService().available_champs_by_role("JGL")[0])
+    print(ChampionService().get_role(ChampionService().get_champ_by_name("Warwick")))
+    print(
+        ChampionService().get_playrate(ChampionService().get_champ_by_name("warwick"))
+    )
 
     print(
         ChampionService()
