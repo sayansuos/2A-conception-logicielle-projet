@@ -25,12 +25,23 @@ if __name__ == "__main__":
     UserService().print_all_users()
     ChampionService().create_all_champs()
     ItemService().create_all_items()
-    print(ChampionService().get_all_champs_for_role("MID"))
-    print(ChampionService().available_champs_for_role(
-        role="BOT",
-        picks=["Ahri", "Lulu", "Camille", "Udyr", "Aphelios", "Corki", "Leona"],
-        bans=[
-            "Caitlyn", "Blitzcrank", "Draven", "Jayce", "Mordekaiser",
-            "Sylas", "Kayn", "Lee Sin", "Master Yi", "Darius"
-        ]))
-    print(ChampionService().available_champs_for_role("JGL"))
+    print(ChampionService().get_all_champs_by_role("MID")[0])
+    print(
+        ChampionService().available_champs_by_role(
+            role="BOT",
+            picks=["Ahri", "Lulu", "Camille", "Udyr", "Aphelios", "Corki", "Leona"],
+            bans=[
+                "Caitlyn",
+                "Blitzcrank",
+                "Draven",
+                "Jayce",
+                "Mordekaiser",
+                "Sylas",
+                "Kayn",
+                "Lee Sin",
+                "Master Yi",
+                "Darius",
+            ],
+        )[0]
+    )
+    print(ChampionService().available_champs_by_role("JGL")[0])
