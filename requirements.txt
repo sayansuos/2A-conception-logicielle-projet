@@ -7,9 +7,6 @@ requests
 pytest==8.3.4
 selenium
 pydantic
-<<<<<<< HEAD
 jinja2
 python-multipart
-=======
 opencv-python
->>>>>>> origin/main
