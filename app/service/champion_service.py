@@ -1,5 +1,6 @@
 from app.client.champion_client import ChampionClient
 from app.client.role_client import RoleClient
+from app.dao.champion_dao import ChampionDao
 from app.models.champion import Champion
 
 
@@ -75,8 +76,51 @@ class ChampionService:
         else:
             return wanted_champ
 
-    def get_playrate(self, champ: Champion):
+    def get_playrate(self, champ: Champion) -> dict:
         """
         This methods gives the role of the champ.
         """
         return RoleClient().get_playrate_by_id(champ.id)
+    
+    def get_all_champs_for_role(self, role: str) -> list:
+        """
+        This method gives the list of all champions according to a given role.
+        """
+        if role not in ["TOP", "JGL", "MID", "BOT", "SUPP"]:
+            raise ValueError("This role doesn't exist.")
+        
+        playable_champs_for_role = []
+
+        champs_list = self.get_all_champs()
+        for champ in champs_list:
+            if self.get_playrate(champ)[role] != 0:
+                playable_champs_for_role.append(champ.name)
+        
+        return playable_champs_for_role
+
+    def available_champs_for_role(self, role: str, picks: list = [], bans: list = []) -> list:
+        """
+        This method gives the list of all available champions someone can choose to
+        play according to their role.
+        """
+        available_champs_for_role = self.get_all_champs_for_role(role)
+
+        unplayable_champs = picks + bans
+
+        for champ in unplayable_champs:
+            if champ in available_champs_for_role:
+                available_champs_for_role.remove(champ)
+        return available_champs_for_role
+
+    def create_all_champs(self) -> bool:
+        """
+        This method add all the champions to the database.
+        """
+        champs_list = self.get_all_champs()
+        all_created = True
+        for champ in champs_list:
+            created = ChampionDao().create(champion=champ)
+            if not created:
+                all_created = False
+
+        return all_created
