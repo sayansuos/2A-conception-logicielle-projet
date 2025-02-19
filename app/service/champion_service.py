@@ -102,8 +102,8 @@ class ChampionService:
         self, role: str, picks: list = None, bans: list = None
     ) -> list:
         """
-        This method gives the list of all available champions someone can choose to
-        play according to their role.
+        This method gives the list of all available champions someone
+        can choose to play according to their role.
         """
         if picks is None:
             picks = []
