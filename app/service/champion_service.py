@@ -82,6 +82,24 @@ class ChampionService:
         """
         return RoleClient().get_playrate_by_id(champ.id)
 
+    def get_role(self, champ: Champion) -> list:
+        """
+        This method gives the role of a champ.
+        """
+        playrate = self.get_playrate(champ)
+        playrate = list(playrate.items())
+        playrate.remove(playrate[0])
+        playrate = sorted(playrate, key=lambda x: x[1], reverse=True)
+
+        role_champ = []
+
+        for element in playrate:
+            role, percentage = element[0], element[1]
+            if percentage != 0:
+                role_champ.append(role)
+
+        return role_champ
+
     def get_all_champs_by_role(self, role: str) -> list:
         """
         This method gives the list of all champions according to a given role.
@@ -121,6 +139,24 @@ class ChampionService:
                     available_champs_for_role.remove(champ)
 
         return available_champs_for_role
+
+    def get_matchup(self, role: str, ennemies: list) -> Champion:
+        """
+        This method allows to identify the direct opponent of a player
+        according to their role.
+        """
+        possible_opponent = []
+
+        for champ in ennemies:
+            list_role = self.get_role(champ)
+            for role_champ in list_role:
+                if role_champ == role:
+                    possible_opponent.append(champ)
+
+        if len(possible_opponent) == 0:
+            return "Your opponent didn't pick already."
+
+        return possible_opponent
 
     def create_all_champs(self) -> bool:
         """

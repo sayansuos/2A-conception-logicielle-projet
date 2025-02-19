@@ -20,28 +20,55 @@ if __name__ == "__main__":
     UserService().create(pseudo="pseudobis", pwd="mdpbis")
     UserService().print_all_users()
     print(UserService().get_by_pseudo(pseudo="pseudobis"))
-    UserService().login(pseudo="pseudo", pwd="mdp")
-    UserService().delete_where_pseudo(pseudo="pseudobis")
-    UserService().print_all_users()
-    ChampionService().create_all_champs()
-    ItemService().create_all_items()
-    print(ChampionService().get_all_champs_by_role("MID")[0])
+    # UserService().login(pseudo="pseudo", pwd="mdp")
+    # UserService().delete_where_pseudo(pseudo="pseudobis")
+    # UserService().print_all_users()
+    # ChampionService().create_all_champs()
+    # ItemService().create_all_items()
+    # print(ChampionService().get_all_champs_by_role("MID")[0])
+    # print(
+    #     ChampionService().available_champs_by_role(
+    #         role="BOT",
+    #         picks=[
+    #             "Ahri",
+    #             "Lulu",
+    #             "Camille",
+    #             "Udyr",
+    #             "Aphelios",
+    #             "Corki",
+    #             "Leona"
+    #         ],
+    #         bans=[
+    #             "Caitlyn",
+    #             "Blitzcrank",
+    #             "Draven",
+    #             "Jayce",
+    #             "Mordekaiser",
+    #             "Sylas",
+    #             "Kayn",
+    #             "Lee Sin",
+    #             "Master Yi",
+    #             "Darius",
+    #         ],
+    #     )[0]
+    # )
+    # print(ChampionService().available_champs_by_role("JGL")[0])
+    print(ChampionService().get_role(ChampionService().get_champ_by_name("Warwick")))
     print(
-        ChampionService().available_champs_by_role(
+        ChampionService().get_playrate(ChampionService().get_champ_by_name("warwick"))
+    )
+
+    print(
+        ChampionService()
+        .get_matchup(
             role="BOT",
-            picks=["Ahri", "Lulu", "Camille", "Udyr", "Aphelios", "Corki", "Leona"],
-            bans=[
-                "Caitlyn",
-                "Blitzcrank",
-                "Draven",
-                "Jayce",
-                "Mordekaiser",
-                "Sylas",
-                "Kayn",
-                "Lee Sin",
-                "Master Yi",
-                "Darius",
+            ennemies=[
+                ChampionService().get_champ_by_name("Darius"),
+                ChampionService().get_champ_by_name("Lee Sin"),
+                ChampionService().get_champ_by_name("Zed"),
+                ChampionService().get_champ_by_name("Aphelios"),
+                ChampionService().get_champ_by_name("Janna"),
             ],
         )[0]
+        .name
     )
-    print(ChampionService().available_champs_by_role("JGL")[0])
