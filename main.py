@@ -29,7 +29,15 @@ if __name__ == "__main__":
     print(
         ChampionService().available_champs_by_role(
             role="BOT",
-            picks=["Ahri", "Lulu", "Camille", "Udyr", "Aphelios", "Corki", "Leona"],
+            picks=[
+                "Ahri",
+                "Lulu",
+                "Camille",
+                "Udyr",
+                "Aphelios",
+                "Corki",
+                "Leona",
+            ],
             bans=[
                 "Caitlyn",
                 "Blitzcrank",
@@ -45,3 +53,4 @@ if __name__ == "__main__":
         )[0]
     )
     print(ChampionService().available_champs_by_role("JGL")[0])
+    ChampionService().get_champ_by_name("ahri").show_image()
