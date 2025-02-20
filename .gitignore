@@ -21,6 +21,17 @@
 __pycache__/
 *.py[cod]
 *$py.class
+__pycache__*
+
+# Ignorer tous les dossiers __pycache__
+**/__pycache__/
+
+
+
+# Ignorer tous les fichiers compilés Python
+*.pyc
+*.pyo
+*.pyd
 
 # C extensions
 *.so
