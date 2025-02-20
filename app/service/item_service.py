@@ -35,7 +35,7 @@ class ItemService:
             )
             all_items.append(item)
 
-        return all_items
+        return list(set(all_items))
 
     def print_all_items(self):
         """

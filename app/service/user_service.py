@@ -1,5 +1,6 @@
 from app.config.security import hash_password
 from app.dao.user_dao import UserDao
+from app.models.build import Build
 from app.models.user import User
 
 
@@ -93,3 +94,14 @@ class UserService:
         return UserDao().login(
             pseudo=pseudo, pwd=hash_password(password=pwd, sel=pseudo)
         )
+
+    def add_build(self, user: User, build: Build) -> bool:
+        """
+        This methods add a build's preference for an user to the db.
+        """
+        if not isinstance(user, User):
+            raise TypeError("The user should be an User instance.")
+        if not isinstance(build, Build):
+            raise TypeError("The build should be a Build instance.")
+
+        return UserDao().add_build(user=user, build=build)

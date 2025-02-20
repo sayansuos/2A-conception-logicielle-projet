@@ -38,6 +38,12 @@ class Item:
     def __str__(self):
         return f"[{self.id}] {self.name} \n{self.stats}"
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
     def show_image(self):
         """
         This methods shows the item's image.

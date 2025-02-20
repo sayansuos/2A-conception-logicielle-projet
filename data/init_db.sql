@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS users_data (
 DROP TABLE IF EXISTS champs_data;
 CREATE TABLE IF NOT EXISTS champs_data (
     id     INTEGER PRIMARY KEY,
-    name   TEXT
+    name   TEXT ,
+    role   TEXT
 );
 
 -----------------------------------------------------
@@ -23,7 +24,7 @@ CREATE TABLE IF NOT EXISTS champs_data (
 DROP TABLE IF EXISTS items_data;
 CREATE TABLE IF NOT EXISTS items_data (
     id     INTEGER PRIMARY KEY,
-    name   TEXT
+    name   TEXT UNIQUE
 );
 
 -----------------------------------------------------

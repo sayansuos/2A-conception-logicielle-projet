@@ -31,7 +31,7 @@ class BuildDao(metaclass=Singleton):
                 build.items["item5"].id,
             ),
         )
-        res = cursor.rowcount
+        build.id = cursor.lastrowid
         connection.commit()
 
-        return res > 0
+        return build.id is not None

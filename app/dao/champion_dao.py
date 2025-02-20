@@ -11,7 +11,7 @@ class ChampionDao(metaclass=Singleton):
     database's champions.
     """
 
-    def create(self, champion: Champion) -> bool:
+    def create(self, champion: Champion, role: str) -> bool:
         """
         This method adds a user to the database.
         """
@@ -19,10 +19,29 @@ class ChampionDao(metaclass=Singleton):
         cursor = connection.cursor()
 
         cursor.execute(
-            "INSERT INTO champs_data(id, name) VALUES (?, ?); ",
-            (champion.id, champion.name),
+            "INSERT INTO champs_data(id, name, role) VALUES (?, ?, ?); ",
+            (champion.id, champion.name, role),
         )
         res = cursor.rowcount
         connection.commit()
 
         return res > 0
+
+    def read_role(self, champion: Champion) -> list:
+        """
+        This methods gives the roles saved in the db for a champion.
+        """
+        connection = sqlite3.connect(ResetDB().get_db_path())
+        cursor = connection.cursor()
+
+        cursor.execute(
+            "SELECT role FROM champs_data WHERE id = ?; ",
+            (champion.id,),
+        )
+        res = cursor.fetchone()
+        connection.commit()
+
+        role = None
+        if res:
+            role = list(res)
+        return role

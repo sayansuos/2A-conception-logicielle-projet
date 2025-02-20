@@ -2,6 +2,7 @@ import sqlite3
 
 from app.config.reset_db import ResetDB
 from app.config.singleton import Singleton
+from app.models.build import Build
 from app.models.user import User
 
 
@@ -99,3 +100,21 @@ class UserDao(metaclass=Singleton):
             user = User.from_sql_result(res)
 
         return user
+
+    def add_build(self, user: User, build: Build) -> bool:
+        """
+        This methods add a build's preference for an user to the db.
+        """
+        connection = sqlite3.connect(ResetDB().get_db_path())
+        cursor = connection.cursor()
+
+        cursor.execute(
+            "INSERT INTO users_builds_data(user_id, build_id) VALUES (?, ?); ",
+            (user.id, build.id),
+        )
+        res = cursor.rowcount
+        connection.commit()
+        cursor.close()
+        connection.close()
+
+        return res > 0

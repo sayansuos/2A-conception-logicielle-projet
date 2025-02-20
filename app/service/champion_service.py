@@ -82,7 +82,7 @@ class ChampionService:
         """
         return RoleClient().get_playrate_by_id(champ.id)
 
-    def get_role(self, champ: Champion) -> list:
+    def create_role(self, champ: Champion) -> list:
         """
         This method gives the role of a champ.
         """
@@ -99,6 +99,15 @@ class ChampionService:
                 role_champ.append(role)
 
         return role_champ
+
+    def get_role(self, champion: Champion) -> list:
+        """
+        This methods gives the roles saved in the db for a champion.
+        """
+        if not isinstance(champion, Champion):
+            return TypeError("The champion should be a Champion instance.")
+
+        return ChampionDao().read_role(champion=champion)
 
     def get_type_damages(self, champ: Champion) -> str:
         """
@@ -221,7 +230,9 @@ class ChampionService:
         champs_list = self.get_all_champs()
         all_created = True
         for champ in champs_list:
-            created = ChampionDao().create(champion=champ)
+            role = self.create_role(champ=champ)
+            role = ", ".join(role)
+            created = ChampionDao().create(champion=champ, role=role)
             if not created:
                 all_created = False
 
