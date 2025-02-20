@@ -14,6 +14,9 @@ class ChampionClient:
         Builder
         """
         self.__host = os.getenv("DATA_URL")
+        self.__host_image = (
+            "https://ddragon.leagueoflegends.com/cdn/img/champion/loading"
+        )
 
     def get_all_champs(self) -> List[str]:
         """
@@ -33,7 +36,7 @@ class ChampionClient:
                 tags = raw_types[champ]["tags"]
                 stats = raw_types[champ]["stats"]
                 info = raw_types[champ]["info"]
-                image = raw_types[champ]["image"]
+                image = self.__host_image + "/" + name + "_0.jpg"
 
                 c = {
                     "name": name,

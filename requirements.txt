@@ -1,9 +1,12 @@
 pylint==3.3.3
 black==24.10.0
 flake8==7.1.1
-fastapi==0.7.0
+fastapi==0.115.8
 uvicorn==0.34.0
 requests
 pytest==8.3.4
 selenium
 pydantic
+jinja2
+python-multipart
+opencv-python
