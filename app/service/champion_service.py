@@ -147,7 +147,7 @@ class ChampionService:
 
         champs_list = self.get_all_champs()
         for champ in champs_list:
-            if self.get_playrate(champ)[role] != 0:
+            if role in self.get_role(champion=champ):
                 playable_champs_for_role.append(champ)
 
         return playable_champs_for_role
