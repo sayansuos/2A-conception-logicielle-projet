@@ -8,12 +8,12 @@ from app.models.item import Item
 class ItemDao(metaclass=Singleton):
     """
     This class contains all the methods required to access the
-    database's items.
+    items' database.
     """
 
     def create(self, item: Item) -> bool:
         """
-        This method adds a user to the database.
+        This method adds a item to the database.
         """
         connection = sqlite3.connect(ResetDB().get_db_path())
         cursor = connection.cursor()
