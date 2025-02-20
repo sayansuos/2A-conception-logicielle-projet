@@ -100,6 +100,33 @@ class ChampionService:
 
         return role_champ
 
+    def get_type_damages(self, champ: Champion) -> str:
+        """
+        This method gives the type of damages a certain champ mostly deals.
+        """
+        if champ.info["attack"] > champ.info["magic"]:
+            return "Physical"
+        elif champ.info["attack"] < champ.info["magic"]:
+            return "Magical"
+        return "Mixed"
+
+    def get_type_damages_team(self, team: list) -> str:
+        """
+        This method gives the type of damages an entire team mostly deals.
+        """
+        physical = 0
+        magical = 0
+        for champ in team:
+            if self.get_type_damages(champ) == "Physical":
+                physical += 1
+            elif self.get_type_damages(champ) == "Magical":
+                magical += 1
+        if physical > magical:
+            return "Physical"
+        elif physical < magical:
+            return "Magical"
+        return "Mixed"
+
     def get_all_champs_by_role(self, role: str) -> list:
         """
         This method gives the list of all champions according to a given role.
@@ -157,6 +184,35 @@ class ChampionService:
             return "Your opponent didn't pick already."
 
         return possible_opponent
+
+    def best_champs(
+        self,
+        role: str,
+        teammates: list = None,
+        ennemies: list = None,
+        bans: list = None,
+    ) -> list:
+        """
+        This method gives a list of the 'best' champs to play according to a
+        given situation (the role you play, your team and the ennemy team).
+        """
+        if teammates is None:
+            teammates = []
+
+        if ennemies is None:
+            ennemies = []
+
+        picks = teammates + ennemies
+
+        available_champs = self.available_champs_by_role(role, picks, bans)
+
+        type_damage_allies = self.get_type_damages_team(teammates)
+
+        for champ in available_champs:
+            if self.get_type_damages(champ) == type_damage_allies:
+                available_champs.remove(champ)
+
+        return available_champs
 
     def create_all_champs(self) -> bool:
         """
