@@ -3,10 +3,10 @@ from typing import Dict, List, Optional
 from fastapi import FastAPI, Path, Query  # , Form, HTTPException
 from pydantic import BaseModel
 
-import app.config.charge_environnement as config
-from app.service.champion_service import ChampionService
-from app.service.item_service import ItemService
-from app.service.user_service import UserService
+import backend.app.config.charge_environnement as config
+from backend.app.service.champion_service import ChampionService
+from backend.app.service.item_service import ItemService
+from backend.app.service.user_service import UserService
 
 # from typing import Annotated
 # from fastapi.responses import HTMLResponse
