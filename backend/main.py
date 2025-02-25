@@ -33,15 +33,9 @@ if __name__ == "__main__":
     )
     print(ChampionService().available_champs_by_role("JGL")[0])
 
+    print(ChampionService().get_role(ChampionService().get_champ_by_name("Warwick")))
     print(
-        ChampionService().get_role(
-            ChampionService().get_champ_by_name("Warwick")
-        )
-    )
-    print(
-        ChampionService().get_playrate(
-            ChampionService().get_champ_by_name("warwick")
-        )
+        ChampionService().get_playrate(ChampionService().get_champ_by_name("warwick"))
     )
 
     print(
@@ -58,7 +52,7 @@ if __name__ == "__main__":
         )[0]
         .name
     )
-    print(ChampionService().get_champ_by_name("smolder").tags)
+    print(ChampionService().get_champ_by_name("garen").tags)
     print(ChampionService().get_champ_by_name("Lissandra").info)
     print(ChampionService().get_champ_by_name("MAokai").tags)
     print(ChampionService().get_champ_by_name("Yuumi").tags)
@@ -69,14 +63,21 @@ if __name__ == "__main__":
     )
 
     best_champ = ChampionService().best_champs(
-        role="MID",
+        role="TOP",
         teammates=[
-            ChampionService().get_champ_by_name("Gwen"),
+            ChampionService().get_champ_by_name("Syndra"),
             ChampionService().get_champ_by_name("Evelynn"),
-            ChampionService().get_champ_by_name("Ziggs"),
+            ChampionService().get_champ_by_name("Caitlyn"),
             ChampionService().get_champ_by_name("Janna"),
         ],
+        ennemies=[ChampionService().get_champ_by_name("Darius")],
     )
 
     for element in best_champ:
         print(element)
+
+    print(
+        ChampionService().best_classes_against(
+            ChampionService().get_champ_by_name("Zed")
+        )
+    )

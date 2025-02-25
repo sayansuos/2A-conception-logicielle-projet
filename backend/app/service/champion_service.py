@@ -194,6 +194,49 @@ class ChampionService:
 
         return possible_opponent
 
+    def is_good_against(self, classe: str) -> list:
+        """
+        This method gives the list of classes that counters another one.
+        """
+        if classe not in ["Tank", "Assassin", "Marksman", "Mage", "Support", "Fighter"]:
+            raise ValueError("Incorrect class given.")
+
+        if classe == "Tank":
+            return ["Marksman", "Fighter"]
+
+        elif classe == "Assassin":
+            return ["Tank", "Support", "Fighter"]
+
+        elif classe == "Marksman":
+            return ["Assassin", "Mage", "Marksman"]
+
+        elif classe == "Mage":
+            return ["Tank", "Assassin"]
+
+        elif classe == "Fighter":
+            return ["Fighter", "Marksman"]
+
+        elif classe == "Support":
+            return ["Fighter"]
+
+    def best_classes_against(self, champ: Champion) -> list:
+        """
+        This method gives the classes that counter a given champ.
+        """
+        best_class = []
+        class_champ = champ.tags
+
+        for classe in class_champ:
+
+            counter_classes = self.is_good_against(classe)
+
+            for counter_class in counter_classes:
+                if counter_class not in best_class:
+
+                    best_class.append(counter_class)
+
+        return best_class
+
     def best_champs(
         self,
         role: str,
@@ -221,7 +264,25 @@ class ChampionService:
             if self.get_type_damages(champ) == type_damage_allies:
                 available_champs.remove(champ)
 
-        return available_champs
+        direct_opponent = self.get_matchup(role, ennemies)
+
+        if isinstance(direct_opponent, str):
+            # The opponent did not pick yet.
+            return available_champs
+
+        else:
+            # You know who is your opponent.
+            best_classes_against = self.best_classes_against(champ=direct_opponent[0])
+
+            for champ in available_champs:
+                est_dans = False
+                for classe in champ.tags:
+                    if classe in best_classes_against:
+                        est_dans = True
+                if est_dans is False:
+                    available_champs.remove(champ)
+
+            return available_champs
 
     def create_all_champs(self) -> bool:
         """
