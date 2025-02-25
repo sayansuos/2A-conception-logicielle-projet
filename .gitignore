@@ -229,3 +229,6 @@ env.local
 
 # Ignorer la database
 database.db
+
+**/configmap.yaml
+configmap.yaml

@@ -7,7 +7,7 @@ data:
   DATABASE_URL: "postgres://user:password@db:5432/mydb"
 
   DATA_URL: "https://ddragon.leagueoflegends.com/cdn/15.1.1/data/en_US"
-  DATA_PWD: RGAPI-794b287e-5730-4331-ac2b-e54754ad940es
+  # DATA_PWD: À REMPLIR AVEC LA CLÉ DE L'API RIOT
   DATA_PLAYRATES: "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US"
 
   #VITE_API_URL: https://backend-conception-logicielle.kub.sspcloud.fr
