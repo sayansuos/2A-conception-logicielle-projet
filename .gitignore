@@ -232,3 +232,4 @@ database.db
 
 **/configmap.yaml
 configmap.yaml
+kurbenetes/backend/configmap.yaml
