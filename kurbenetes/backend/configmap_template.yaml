@@ -6,11 +6,11 @@ data:
   VARIABLE_ENVIRONNEMENT1: variable_environnement
   DATABASE_URL: "postgres://user:password@db:5432/mydb"
 
+  DATA_URL: "https://ddragon.leagueoflegends.com/cdn/15.1.1/data/en_US"
+  # DATA_PWD: À REMPLIR AVEC LA CLÉ DE L'API RIOT
+  DATA_PLAYRATES: "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US"
 
-  # exemple api python
-  #API_URL: la valeur de l'url
-  #API_KEY: la valeur de la cle (attention a pas versionner ou dans un autre dépot privé)
-  # exemple appli vite
   #VITE_API_URL: https://backend-conception-logicielle.kub.sspcloud.fr
   #VITE_ENVIRONNEMENT: sspcloud-pd
   #__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "frontend-conception-logicielle.kub.sspcloud.fr"
+
