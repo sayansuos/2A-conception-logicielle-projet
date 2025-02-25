@@ -1,11 +1,12 @@
-from typing import List  # , Dict, Optional
+from typing import Dict, List, Optional
 
-from fastapi import FastAPI, Path  # , Form, HTTPException
+from fastapi import FastAPI, Path, Query  # , Form, HTTPException
 from pydantic import BaseModel
 
 import app.config.charge_environnement as config
 from app.service.champion_service import ChampionService
 from app.service.item_service import ItemService
+from app.service.user_service import UserService
 
 # from typing import Annotated
 # from fastapi.responses import HTMLResponse
@@ -47,21 +48,51 @@ class Item(BaseModel):
     image: str
 
 
-"""
+class Build(BaseModel):
+    """
+    Représente un builds avec ses détails.
+    """
+
+    champion: Champion
+    item1: Optional[Item] = None
+    item2: Optional[Item] = None
+    item3: Optional[Item] = None
+    item4: Optional[Item] = None
+    item5: Optional[Item] = None
+
+
 class User(BaseModel):
+    """
+    Représente un utilisateur et ses détails.
+    """
+
+    user_id: int
     pseudo: str
-    password: str
-"""
+    pref: Optional[Dict[Champion, Build]]
+
+
+class LoginUser(BaseModel):
+    """
+    Authentification d'un utilisateur avec ses détails.
+    """
+
+    pseudo: str
+    pwd: str
 
 
 app = FastAPI()
 
 # user
-"""
-@app.post("/login/")
-async def login(data: Annotated[User, Form()]):
-    return data
-"""
+
+
+@app.get("/user/{pseudo}")
+async def get_user_by_pseudo(pseudo: str) -> User:
+    user = UserService().get_by_pseudo(pseudo=pseudo)
+    return User(user_id=user.id, pseudo=user.pseudo, pref=user.pref)
+
+
+# build
+
 # champion
 
 
@@ -112,6 +143,46 @@ async def get_champion_by_name(name: str) -> Champion:
         info=champion.info,
         image=champion.image,
     )
+
+
+@app.get("/champion/best")
+async def get_best_champs(
+    role: str = Query(..., description="role of the player"),
+    teammates: Optional[List[str]] = Query([], description="Allies"),
+    ennemies: Optional[List[str]] = Query([], description="Enemies"),
+    bans: Optional[List[str]] = Query([], description="Bans"),
+):
+
+    Team = []
+    Ennemies = []
+    Bans = []
+    Best_Champs = []
+
+    for champs in teammates:
+        Team.append(ChampionService().get_champ_by_name(champs))
+    for ennems in ennemies:
+        Ennemies.append(ChampionService().get_champ_by_name(ennems))
+    for champ_bans in bans:
+        Bans.append(ChampionService().get_champ_by_name(champ_bans))
+
+    best_champs = ChampionService().best_champs(
+        role=role, teammates=Team, ennemies=Ennemies, bans=Bans
+    )
+
+    for best in best_champs:
+        Best_Champs.append(
+            Champion(
+                name=best.name,
+                champ_id=best.id,
+                blurb=best.blurb,
+                tags=best.tags,
+                stats=best.stats,
+                info=best.info,
+                image=best.image,
+            )
+        )
+
+    return Best_Champs
 
 
 # item
