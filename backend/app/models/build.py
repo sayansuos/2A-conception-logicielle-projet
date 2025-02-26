@@ -18,6 +18,7 @@ class Build:
         item3: Item = None,
         item4: Item = None,
         item5: Item = None,
+        id: int = None,
     ):
         """
         Builder
@@ -30,6 +31,7 @@ class Build:
             "item4": item4,
             "item5": item5,
         }
+        self.id = id
 
     def __str__(self):
         champion = f"** {self.champion}'s Build **\n"

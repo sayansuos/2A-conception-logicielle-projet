@@ -1,10 +1,10 @@
 import app.config.charge_environnement as config
 from app.service.champion_service import ChampionService
-from app.service.user_service import UserService
+from app.service.item_service import ItemService
 
 if __name__ == "__main__":
     config.load_dotenv()
-    UserService().create("pseudo_test", "pwd_test")
+    print(type(ItemService().get_item_by_name(None)))
     champ_list = ChampionService().get_all_champs()
     print(ChampionService().get_all_champs_by_role("MID")[0])
     print(

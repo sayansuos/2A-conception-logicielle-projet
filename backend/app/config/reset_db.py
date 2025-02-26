@@ -13,7 +13,7 @@ class ResetDB(metaclass=Singleton):
         """
         Builder
         """
-        self.__db_path = os.getenv("DB_PATH", "backend/data/database.db")
+        self.__db_path = os.getenv("DB_PATH", "data/database.db")
 
     def get_db_path(self):
         """
@@ -28,7 +28,7 @@ class ResetDB(metaclass=Singleton):
         connection = sqlite3.connect(self.__db_path)
         cursor = connection.cursor()
 
-        init_db = open("backend/data/init_db.sql", encoding="utf-8")
+        init_db = open("data/init_db.sql", encoding="utf-8")
         init_db_as_string = init_db.read()
         init_db.close()
 

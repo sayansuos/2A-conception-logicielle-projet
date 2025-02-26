@@ -3,16 +3,13 @@ from typing import List, Optional
 import app.config.charge_environnement as config
 from app.dto.champion_dto import ChampionDTO
 from app.dto.item_dto import ItemDTO
+from app.dto.login_dto import LoginUserDTO
 from app.dto.user_dto import UserDTO
+from app.service.build_service import BuildService
 from app.service.champion_service import ChampionService
 from app.service.item_service import ItemService
 from app.service.user_service import UserService
-from fastapi import FastAPI, Path, Query
-
-# from app.dto.build_dto import BuildDTO
-# from app.models.build import Build
-# from app.dto.login_dto import LoginUserDTO
-
+from fastapi import Depends, FastAPI, Path, Query
 
 config.load_dotenv()
 
@@ -25,35 +22,60 @@ app = FastAPI()
 @app.get("/user/{pseudo}")
 async def get_user_by_pseudo(pseudo: str) -> UserDTO:
     user = UserService().get_by_pseudo(pseudo=pseudo)
-    return UserDTO(pseudo=user.pseudo, pref=user.pref)
+    return UserDTO(user_id=user.id, pseudo=user.pseudo, pref=user.pref)
 
 
-"""
 @app.post("/user/addbuild")
-async def add_build(user:UserDTO, build:BuildDTO) -> UserDTO:
-    build_added = UserService().add_build(
-        user=UserService().get_by_pseudo(user.pseudo),
-        build= Build(**build)
+async def add_build(
+    champion_name: str,
+    item1_name: str,
+    item2_name: str,
+    item3_name: str,
+    item4_name: str,
+    item5_name: str,
+    pseudo: str = Query(..., description="Username"),
+) -> bool:
+
+    user = UserService().get_by_pseudo(pseudo)
+
+    build_create = BuildService().create(
+        champion=ChampionService().get_champ_by_name(champ_name=champion_name),
+        item1=ItemService().get_item_by_name(item_name=item1_name),
+        item2=ItemService().get_item_by_name(item_name=item2_name),
+        item3=ItemService().get_item_by_name(item_name=item3_name),
+        item4=ItemService().get_item_by_name(item_name=item4_name),
+        item5=ItemService().get_item_by_name(item_name=item5_name),
     )
-    return BuildDTO(**build_added.__dict__)
+
+    build_user = UserService().add_build(user=user, build=build_create)
+
+    return build_user
+
+
+@app.delete("/user/delete")
+async def delete(pseudo: str) -> bool:
+    return UserService().delete_where_pseudo(pseudo=pseudo)
 
 
 # login
 
+
 @app.post("/user/create")
-async def create_user(
-    pseudo: str = Query(...,description="Your username"),
-    pwd: str = Query(...,description="Your password")
-):
-    user_id = UserService().create(pseudo=pseudo,pwd=pwd)
+async def create_user(userlogin: LoginUserDTO = Depends()):
+    user_id = UserService().create(
+        pseudo=userlogin.pseudo, pwd=userlogin.pwd.get_secret_value()
+    )
     return user_id
 
+
 @app.post("/user/login")
-async def login_user(request: LoginUserDTO):
-    user = UserService().login(pseudo=request.pseudo, pwd=request.pwd)
-    user_id = UserService().get_by_pseudo(pseudo=request.pseudo).id
+async def login_user(userlogin: LoginUserDTO = Depends()):
+    user = UserService().login(
+        pseudo=userlogin.pseudo, pwd=userlogin.pwd.get_secret_value()
+    )
+    user_id = UserService().get_by_pseudo(pseudo=userlogin.pseudo).id
     return UserDTO(user_id=user_id, pseudo=user.pseudo, pref=user.pref)
-"""
+
 
 # build
 

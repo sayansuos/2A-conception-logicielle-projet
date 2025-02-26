@@ -1,5 +1,3 @@
-from typing import Optional
-
 from app.dto.champion_dto import ChampionDTO
 from app.dto.item_dto import ItemDTO
 from pydantic import BaseModel
@@ -11,8 +9,8 @@ class BuildDTO(BaseModel):
     """
 
     champion: ChampionDTO
-    item1: Optional[ItemDTO] = None
-    item2: Optional[ItemDTO] = None
-    item3: Optional[ItemDTO] = None
-    item4: Optional[ItemDTO] = None
-    item5: Optional[ItemDTO] = None
+    item1: ItemDTO
+    item2: ItemDTO
+    item3: ItemDTO
+    item4: ItemDTO
+    item5: ItemDTO

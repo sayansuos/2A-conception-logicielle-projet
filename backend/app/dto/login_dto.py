@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, SecretStr
 
 
 class LoginUserDTO(BaseModel):
@@ -7,4 +7,4 @@ class LoginUserDTO(BaseModel):
     """
 
     pseudo: str
-    pwd: str
+    pwd: SecretStr
