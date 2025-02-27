@@ -1,4 +1,5 @@
 import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 import requests
 
@@ -55,3 +56,17 @@ class Item:
         cv2.imshow("Image", img)  # Affiche l'image
         cv2.waitKey(0)  # Attend une touche pour fermer
         cv2.destroyAllWindows()  # Ferme la fenêtre
+
+    def show_image_plt(self):
+        """
+        This methods shows the item's image using matplotlib.
+        """
+        response = requests.get(self.image, timeout=None)  # Télécharge l'image
+        img_array = np.asarray(bytearray(response.content), dtype=np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+        plt.imshow(img)
+        plt.axis("off")
+        plt.show()
