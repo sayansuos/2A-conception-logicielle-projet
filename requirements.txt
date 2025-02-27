@@ -6,8 +6,9 @@ uvicorn==0.34.0
 requests
 pytest==8.3.4
 selenium
-pydantic
+pydantic>=2.0
 jinja2
 python-multipart
 opencv-python
 dotenv
+matplotlib
