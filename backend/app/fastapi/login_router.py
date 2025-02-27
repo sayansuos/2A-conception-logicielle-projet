@@ -1,3 +1,8 @@
+"""
+Login and user creation routes for authentication.
+
+"""
+
 from app.dto.login_dto import LoginUserDTO
 from app.dto.user_dto import UserDTO
 from app.service.user_service import UserService
@@ -8,6 +13,9 @@ login_router = APIRouter(prefix="/login", tags=["Login"])
 
 @login_router.post("/create")
 async def create_user(userlogin: LoginUserDTO = Depends()):
+    """
+    Create a new user by providing a username and password.
+    """
     user_id = UserService().create(
         pseudo=userlogin.pseudo, pwd=userlogin.pwd.get_secret_value()
     )
@@ -16,6 +24,9 @@ async def create_user(userlogin: LoginUserDTO = Depends()):
 
 @login_router.post("/user")
 async def login_user(userlogin: LoginUserDTO = Depends()):
+    """
+    Log in a user by verifying the username and password.
+    """
     user = UserService().login(
         pseudo=userlogin.pseudo, pwd=userlogin.pwd.get_secret_value()
     )
