@@ -5,7 +5,11 @@ from app.service.champion_service import ChampionService
 from app.service.item_service import ItemService
 from app.service.user_service import UserService
 
-if __name__ == "__main__":
+
+def app_setup():
+    """
+    This function allows to set up the app's database.
+    """
     config.load_dotenv()
     # Database initialisation
     ResetDB().init_db()
