@@ -1,3 +1,5 @@
+""" User """
+
 from app.dto.user_dto import UserDTO
 from app.service.build_service import BuildService
 from app.service.champion_service import ChampionService
@@ -7,11 +9,12 @@ from fastapi import APIRouter, Query
 
 user_router = APIRouter(prefix="/user", tags=["User"])
 
-# user
 
-
-@user_router.get("/{pseudo}")
+@user_router.get("/{pseudo}", response_model=UserDTO)
 async def get_user_by_pseudo(pseudo: str) -> UserDTO:
+    """
+    Retrieve a user by their pseudo.
+    """
     user = UserService().get_by_pseudo(pseudo=pseudo)
     return UserDTO(user_id=user.id, pseudo=user.pseudo, pref=user.pref)
 
@@ -26,7 +29,9 @@ async def add_build(
     item5_name: str,
     pseudo: str = Query(..., description="Username"),
 ) -> bool:
-
+    """
+    Add a build for a user.
+    """
     user = UserService().get_by_pseudo(pseudo)
 
     build_create = BuildService().create(
@@ -45,4 +50,7 @@ async def add_build(
 
 @user_router.delete("/delete")
 async def delete(pseudo: str) -> bool:
+    """
+    Delete a user by their pseudo.
+    """
     return UserService().delete_where_pseudo(pseudo=pseudo)

@@ -1,3 +1,5 @@
+""" Champion """
+
 from typing import List, Optional
 
 from app.dto.champion_dto import ChampionDTO
@@ -9,11 +11,17 @@ champion_router = APIRouter(prefix="/champion", tags=["Champion"])
 
 @champion_router.get("/total_champion")
 async def get_total_champion() -> dict:
+    """
+    Returns the total number of available champions.
+    """
     return {"total": len(ChampionService().get_all_champs())}
 
 
 @champion_router.get("/champions", response_model=List[ChampionDTO])
 async def get_all_champions() -> list[ChampionDTO]:
+    """
+    Returns a list of all available champions.
+    """
     return [
         ChampionDTO(
             name=champion.name,
@@ -28,9 +36,12 @@ async def get_all_champions() -> list[ChampionDTO]:
     ]
 
 
-@champion_router.get("/id/{id}")
-async def get_champion_by_id(id: int = Path(ge=1)) -> ChampionDTO:
-    champion = ChampionService().get_champ_by_id(id)
+@champion_router.get("/id/{champion_id}")
+async def get_champion_by_id(champion_id: int = Path(ge=1)) -> ChampionDTO:
+    """
+    Returns a champion by its ID.
+    """
+    champion = ChampionService().get_champ_by_id(champion_id)
     return ChampionDTO(
         name=champion.name,
         champ_id=champion.id,
@@ -44,6 +55,9 @@ async def get_champion_by_id(id: int = Path(ge=1)) -> ChampionDTO:
 
 @champion_router.get("/name/{name}")
 async def get_champion_by_name(name: str) -> ChampionDTO:
+    """
+    Returns a champion by its name.
+    """
     champion = ChampionService().get_champ_by_name(name)
     return ChampionDTO(
         name=champion.name,
@@ -58,30 +72,33 @@ async def get_champion_by_name(name: str) -> ChampionDTO:
 
 @champion_router.get("/best")
 async def get_best_champs(
-    role: str = Query(..., description="role of the player"),
+    role: str = Query(..., description="Role of the player"),
     teammates: Optional[List[str]] = Query([], description="Allies"),
     ennemies: Optional[List[str]] = Query([], description="Enemies"),
     bans: Optional[List[str]] = Query([], description="Bans"),
 ):
+    """
+    Returns the best champions for a specific role considering
+    allies, enemies, and bans.
+    """
+    team = []
+    enemies = []
+    banned_champs = []
+    best_champs = []
 
-    Team = []
-    Ennemies = []
-    Bans = []
-    Best_Champs = []
+    for champ in teammates:
+        team.append(ChampionService().get_champ_by_name(champ))
+    for ennemy in ennemies:
+        enemies.append(ChampionService().get_champ_by_name(ennemy))
+    for banned in bans:
+        banned_champs.append(ChampionService().get_champ_by_name(banned))
 
-    for champs in teammates:
-        Team.append(ChampionService().get_champ_by_name(champs))
-    for ennems in ennemies:
-        Ennemies.append(ChampionService().get_champ_by_name(ennems))
-    for champ_bans in bans:
-        Bans.append(ChampionService().get_champ_by_name(champ_bans))
-
-    best_champs = ChampionService().best_champs(
-        role=role, teammates=Team, ennemies=Ennemies, bans=Bans
+    best_champs_list = ChampionService().best_champs(
+        role=role, teammates=team, ennemies=enemies, bans=banned_champs
     )
 
-    for best in best_champs:
-        Best_Champs.append(
+    for best in best_champs_list:
+        best_champs.append(
             ChampionDTO(
                 name=best.name,
                 champ_id=best.id,
@@ -93,9 +110,12 @@ async def get_best_champs(
             )
         )
 
-    return Best_Champs
+    return best_champs
 
 
 @champion_router.get("/image")
 async def show_image_by_name(name: str):
-    return ChampionService().get_champ_by_name(name).show_image()
+    """
+    Displays the image of a champion by its name.
+    """
+    return ChampionService().get_champ_by_name(name).show_image_plt()
