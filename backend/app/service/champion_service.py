@@ -198,7 +198,14 @@ class ChampionService:
         """
         This method gives the list of classes that counters another one.
         """
-        if classe not in ["Tank", "Assassin", "Marksman", "Mage", "Support", "Fighter"]:
+        if classe not in [
+            "Tank",
+            "Assassin",
+            "Marksman",
+            "Mage",
+            "Support",
+            "Fighter",
+        ]:
             raise ValueError("Incorrect class given.")
 
         if classe == "Tank":
@@ -272,7 +279,9 @@ class ChampionService:
 
         else:
             # You know who is your opponent.
-            best_classes_against = self.best_classes_against(champ=direct_opponent[0])
+            best_classes_against = self.best_classes_against(
+                champ=direct_opponent[0]
+            )
 
             for champ in available_champs:
                 est_dans = False
