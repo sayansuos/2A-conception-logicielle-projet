@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration-application
+data:
+  VARIABLE_ENVIRONNEMENT1: variable_environnement
+  DATABASE_URL: "postgres://user:password@db:5432/mydb"
+
+  DATA_URL: "https://ddragon.leagueoflegends.com/cdn/15.1.1/data/en_US"
+  DATA_PWD: ""
+  DATA_PLAYRATES: "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US"
