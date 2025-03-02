@@ -118,3 +118,23 @@ class UserDao(metaclass=Singleton):
         connection.close()
 
         return res > 0
+
+    def read_user_builds(self, user: User) -> bool:
+        """
+        This methods gives all the builds saved by an user.
+        """
+        connection = sqlite3.connect(ResetDB().get_db_path())
+        cursor = connection.cursor()
+
+        cursor.execute(
+            "SELECT * FROM users_builds_data WHERE user_id = ?;", (user.id,)
+        )
+        res = cursor.fetchall()
+        connection.commit()
+
+        user_build_list = []
+        if res:
+            for build in res:
+                user_build_list.append(build)
+
+        return user_build_list

@@ -169,9 +169,9 @@ class ChampionService:
 
         unplayable_champs = picks + bans
 
-        for champ_name in unplayable_champs:
+        for unplayable in unplayable_champs:
             for champ in available_champs_for_role:
-                if champ_name == champ.name:
+                if unplayable.name == champ.name:
                     available_champs_for_role.remove(champ)
 
         return available_champs_for_role
