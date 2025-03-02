@@ -1,4 +1,5 @@
 import app.config.charge_environnement as config
+from app.fastapi.build_router import build_router
 from app.fastapi.champion_router import champion_router
 from app.fastapi.item_router import item_router
 from app.fastapi.login_router import login_router
@@ -12,6 +13,7 @@ app.include_router(user_router, tags=["User"])
 app.include_router(champion_router, tags=["Champion"])
 app.include_router(item_router, tags=["Item"])
 app.include_router(login_router, tags=["Login"])
+app.include_router(build_router, tags=["Build"])
 
 if __name__ == "__main__":
     config.load_dotenv()

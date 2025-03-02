@@ -36,6 +36,14 @@ async def get_all_champions() -> list[ChampionDTO]:
     ]
 
 
+@champion_router.get("/champions_names")
+async def get_champion_names() -> List[str]:
+    """
+    Returns a list of all items name available in the system.
+    """
+    return [champion.name for champion in ChampionService().get_all_champs()]
+
+
 @champion_router.get("/id/{champion_id}")
 async def get_champion_by_id(champion_id: int = Path(ge=1)) -> ChampionDTO:
     """

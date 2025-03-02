@@ -76,7 +76,7 @@ class BuildService:
             )
             all_builds.append(build)
 
-        return list(all_builds)
+        return all_builds
 
     def get_build_by_id(self, build_id: int) -> Build:
         """

@@ -35,6 +35,14 @@ async def get_all_items() -> List[ItemDTO]:
     ]
 
 
+@item_router.get("/items_names")
+async def get_items_names() -> List[str]:
+    """
+    Returns a list of all items name available in the system.
+    """
+    return [item.name for item in ItemService().get_all_items()]
+
+
 @item_router.get("/id/{item_id}")
 async def get_item_by_id(item_id: int) -> ItemDTO:
     """
