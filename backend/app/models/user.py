@@ -5,10 +5,10 @@ class User:
     - **pseudo**: Pseudonyme of the user.
     - **id**: Identifiant of the user.
     - **pwd**: Password of the user.
-    - **pref**: A dictionnary with Champion as key and Build as value.
+    - **pref**: A list with associated builds' id.
     """
 
-    def __init__(self, user_id: int, pseudo: str, pwd: str, pref: dict = None):
+    def __init__(self, user_id: int, pseudo: str, pwd: str, pref: list = None):
         """
         Builder
         """
