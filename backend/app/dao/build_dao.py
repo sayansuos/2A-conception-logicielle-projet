@@ -35,3 +35,21 @@ class BuildDao(metaclass=Singleton):
         connection.commit()
 
         return build.id is not None
+
+    def read_all_builds(self) -> list[Build]:
+        """
+        This methods gives all the bulds from the database.
+        """
+        connection = sqlite3.connect(ResetDB().get_db_path())
+        cursor = connection.cursor()
+
+        cursor.execute(
+            "SELECT * FROM builds_data",
+        )
+        res = cursor.fetchall()
+
+        builds_list = []
+        for build_raw in res:
+            builds_list.append(build_raw)
+
+        return builds_list

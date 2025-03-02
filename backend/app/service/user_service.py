@@ -2,6 +2,7 @@ from app.config.security import hash_password
 from app.dao.user_dao import UserDao
 from app.models.build import Build
 from app.models.user import User
+from app.service.build_service import BuildService
 
 
 class UserService:
@@ -105,3 +106,17 @@ class UserService:
             raise TypeError("The build should be a Build instance.")
 
         return UserDao().add_build(user=user, build=build)
+
+    def get_user_build(self, user: User) -> list[Build]:
+        """
+        This method gives all the builds associated to an user from
+        the database.
+        """
+        builds_list_raw = UserDao().read_user_builds(user=user)
+
+        builds_list = []
+        for raw_build in builds_list_raw:
+            build = BuildService().get_build_by_id(raw_build[1])
+            builds_list.append(build)
+
+        return builds_list
