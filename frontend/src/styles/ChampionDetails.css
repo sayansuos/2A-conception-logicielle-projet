@@ -1,0 +1,99 @@
+.champion-details {
+  text-align: center;
+  background: rgba(240, 230, 210, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  width: 450px; /* Augmentation de la largeur pour s'aligner avec la barre de recherche */
+  margin: 20px auto;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.champion-name {
+  font-size: 1.8rem;
+  color: #3D2E1E;
+  font-weight: bold;
+}
+
+.champion-image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.champion-image {
+  width: 80%;
+  max-width: 200px;
+  border-radius: 6px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.champion-image:hover {
+  transform: scale(1.05);
+}
+
+.champion-blurb {
+  font-size: 1rem;
+  color: #4D3B2B;
+  margin: 10px 0;
+  font-style: italic;
+  text-align: center;
+  text-transform: none; /* S'assure que le texte n'est pas tout en majuscule */
+}
+
+.champion-roles {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.role-chip {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  transition: transform 0.2s ease-in-out;
+}
+
+.role-chip:hover {
+  transform: scale(1.1);
+}
+
+
+.role-chip.mage {
+  background: #1E90FF;
+}
+
+.role-chip.assassin {
+  background: #DC143C;
+}
+
+.champion-attributes {
+  font-size: 1rem;
+  color: #2B1C0C;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.champion-stats {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.champion-stats h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: #C89B3C;
+}
+
+.champion-stats p {
+  margin: 3px 0; /* Réduction de l'espace entre les lignes */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333; /* Texte plus foncé pour une meilleure lisibilité */
+}
+
