@@ -60,10 +60,10 @@ class ChampionService:
 
     def get_champ_by_name(self, champ_name: str) -> Champion:
         """
-        This method gives a champ by its id.
+        This method gives a champ by its name.
         """
         if not isinstance(champ_name, str):
-            return TypeError("The champ's id should be an str instance.")
+            return TypeError("The champ's name should be an str instance.")
 
         wanted_champ = None
 

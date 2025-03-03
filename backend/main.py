@@ -9,11 +9,11 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-app.include_router(user_router, tags=["User"])
 app.include_router(champion_router, tags=["Champion"])
 app.include_router(item_router, tags=["Item"])
-app.include_router(login_router, tags=["Login"])
 app.include_router(build_router, tags=["Build"])
+app.include_router(user_router, tags=["User"])
+app.include_router(login_router, tags=["Login"])
 
 if __name__ == "__main__":
     config.load_dotenv()
