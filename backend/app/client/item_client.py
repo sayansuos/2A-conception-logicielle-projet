@@ -35,7 +35,7 @@ class ItemClient:
                 ):
                     name = raw_types[item]["name"]
                     item_id = int(item)
-                    description = raw_types[item]["plaintext"]
+                    description = raw_types[item]["description"]
                     tags = raw_types[item]["tags"]
                     stats = raw_types[item]["stats"]
                     image = self.__im + "/" + str(item_id) + ".png"
