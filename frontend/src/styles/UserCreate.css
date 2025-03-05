@@ -1,5 +1,5 @@
-.build-search {
-    width: 24rem;  /* Réduction de la taille */
+.user-create {
+    width: 30rem;  /* Réduction de la taille */
     margin: 1.5rem auto;
     padding: 1rem;
     background: rgba(240, 230, 210, 0.85);
@@ -12,21 +12,39 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
-  .build-search label {
+  .user-create label {
     font-size: 1rem;
     font-weight: bold;
     color: #5A3E1B;
     margin-bottom: 0.5rem;
   }
   
-  .search-container {
+  .create-container {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
   }
   
-  .build-search button {
+  .user-create input {
+    font-size: 0.9rem;  /* Réduction */
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 6px;
+    border: 2px solid #C89B3C;
+    background: rgba(255, 255, 255, 0.2);
+    color: #3D2E1E;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .user-createe input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .user-create button {
     font-size: 0.9rem;  /* Réduction */
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #C89B3C, #A37D2E);
@@ -37,7 +55,7 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .build-search button:hover {
+  .user-create button:hover {
     background: linear-gradient(135deg, #A37D2E, #87661E);
   }
   

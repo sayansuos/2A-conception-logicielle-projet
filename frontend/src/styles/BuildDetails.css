@@ -1,66 +1,93 @@
 .build-details {
-    display: flex;
-    flex-direction: column;  /* Affiche les builds les uns sous les autres */
-    align-items: center;
-    gap: 30px;  /* Espacement entre chaque build */
-    padding: 20px;
-  }
-  
-  .build-card {
-    display: flex;
-    flex-direction: column;  
-    justify-content: flex-start;
-    align-items: center;
-    background: rgba(240, 230, 210, 0.85);
-    padding: 15px;
-    border-radius: 10px;
-    width: 1600px;  /* Limite la largeur maximale de chaque build */
-    height: 800px;
-  }
-  
-  .build-id {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    width: 100%;  
-    display: flex;
-    justify-content: center; 
-  }
-  
-  .card-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-start;
-  }
-  
-  .champion-container {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 300px;
-    height: 400px;
-  }
-  
-  .items-container {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: nowrap;  /* Assure que les items restent sur une seule ligne */
-    gap:3px;
-    width: 400px; 
-  }
-  
-  .items-container > * {
-    transform: scale(0.7);  /* Réduit la taille des items pour mieux les ajuster */
-    gap: 3px;
-  }
-  
-  .champion-container > * {
-    transform: scale(0.7);  /* Réduit légèrement la taille du champion */
-  }
-  
-  .build-card h3 {
-    margin-right: 1Opx; /* Espacement du titre */
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  width: 100rem;
+}
+
+.build-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(240, 230, 210, 0.85);
+  padding: 15px;
+  border-radius: 10px;
+  width: 600px;
+  color: #5A3E1B;
+}
+
+.build-id {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.build-content {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row; /* Placer les éléments en ligne */
+  justify-content: centerleft; /* Alignement à gauche */
+  gap: 20px; /* Espacement entre le champion et les items */
+  width: 100%;
+  height: 700px;
+  align-items: center;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column; /* Les items restent dans une colonne */
+  align-items: flex-start; /* Aligner les items à gauche */
+  gap: 55px; /* Espacement entre les items */
+}
+
+.champion-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  transform: scale(0.7);
+}
+
+.item-wrapper {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 150px;
+}
+
+.item-wrapper:hover .tooltip {
+  display: block;
+}
+
+.item-details-popup {
+  position: absolute;
+  right: 110%; 
+  top: 50%;
+  transform: translateY(-50%) scale(0.7);
+  border-radius: 8px; 
+  z-index: 1000; /* Assurer que le popup soit au premier plan */
+}
+
+
+.item-image {
+  transform: scale(1);
+}

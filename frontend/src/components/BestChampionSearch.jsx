@@ -53,7 +53,7 @@ const BestChampionSearch = ({ setBestChampion }) => {
 
   return (
     <div className="best-champion-search">
-      <label htmlFor="search-input">Find the best champions to play :</label>
+      <label htmlFor="search-input">Find the best champion to play :</label>
       <div className="search-container">
         <input
           id="search-input-role"

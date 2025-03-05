@@ -1,5 +1,5 @@
-.best-champion-search {
-    width: 40rem;  /* Réduction de la taille */
+.my-build-search {
+    width: 30rem;  /* Réduction de la taille */
     margin: 1.5rem auto;
     padding: 1rem;
     background: rgba(240, 230, 210, 0.85);
@@ -12,7 +12,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
-  .best-champion-search label {
+  .my-build-search label {
     font-size: 1rem;
     font-weight: bold;
     color: #5A3E1B;
@@ -24,11 +24,9 @@
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    flex-direction: column;
-    gap: 10px;
   }
   
-  .best-champion-search input {
+  .my-build-search input {
     font-size: 0.9rem;  /* Réduction */
     padding: 0.5rem;
     width: 100%;
@@ -39,12 +37,12 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .best-champion-search input:focus {
+  .champion-search input:focus {
     outline: none;
     background: rgba(255, 255, 255, 0.4);
   }
   
-  .best-champion-search button {
+  .my-build-search button {
     font-size: 0.9rem;  /* Réduction */
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #C89B3C, #A37D2E);
@@ -55,7 +53,7 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .best-champion-search button:hover {
+  .my-build-search button:hover {
     background: linear-gradient(135deg, #A37D2E, #87661E);
   }
   
