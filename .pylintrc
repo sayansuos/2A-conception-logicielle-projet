@@ -1,19 +1,18 @@
 [MASTER]
 init-hook='import sys; sys.path.append(".")'
+
 [MESSAGES CONTROL]
-# Activer ou désactiver certains types de messages
-disable = 
-    missing-module-docstring,  # Pas de docstring pour les modules
-    missing-function-docstring, # Pas de docstring pour les fonctions
+# Désactiver les messages de docstring manquants
+disable=missing-module-docstring,missing-function-docstring
 
 [DESIGN]
-# Configuration pour les lignes longues
-max-line-length = 79  # Limiter à 120 caractères par ligne
+# Limiter la longueur des lignes
+max-line-length = 79
 
 [FORMAT]
-# Configuration de formatage
-good-names = i,j,k,e,x,run,_)  # Noms "bons" pour les variables
+# Définir des noms de variables valides
+good-names = i,j,k,e,x,run,_
 
 [REPORTS]
-# Format de sortie pour les résultats de Pylint
-output-format = text  # Format de sortie en texte
+# Format de sortie
+output-format = text
