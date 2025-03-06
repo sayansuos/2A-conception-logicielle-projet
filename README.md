@@ -67,7 +67,7 @@ L'application web sera disponible à :
 Depuis la racine du projet, exécutez : 
 
 ```
-cd frontend
+cd backend
 python3 -m unittest discover app/tests
 ```
 
