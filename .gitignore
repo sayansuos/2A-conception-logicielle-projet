@@ -231,3 +231,6 @@ env.local
 database.db
 
 kurbenetes/backend/configmap.yaml
+
+
+**/node_modules/

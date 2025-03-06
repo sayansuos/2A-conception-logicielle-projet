@@ -12,3 +12,5 @@ python-multipart
 opencv-python
 dotenv
 matplotlib
+pytest-asyncio
+httpx

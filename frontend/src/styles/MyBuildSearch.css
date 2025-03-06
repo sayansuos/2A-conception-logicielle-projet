@@ -1,5 +1,5 @@
 .my-build-search {
-    width: 30rem;  /* Réduction de la taille */
+    width: 30rem;  
     margin: 1.5rem auto;
     padding: 1rem;
     background: rgba(240, 230, 210, 0.85);
@@ -27,7 +27,7 @@
   }
   
   .my-build-search input {
-    font-size: 0.9rem;  /* Réduction */
+    font-size: 0.9rem;  
     padding: 0.5rem;
     width: 100%;
     border-radius: 6px;
@@ -37,13 +37,8 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .champion-search input:focus {
-    outline: none;
-    background: rgba(255, 255, 255, 0.4);
-  }
-  
   .my-build-search button {
-    font-size: 0.9rem;  /* Réduction */
+    font-size: 0.9rem;  
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #C89B3C, #A37D2E);
     border: none;
@@ -56,4 +51,3 @@
   .my-build-search button:hover {
     background: linear-gradient(135deg, #A37D2E, #87661E);
   }
-  

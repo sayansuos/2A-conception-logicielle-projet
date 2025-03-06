@@ -18,6 +18,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install -r backend/requirements.txt        
+    - name: Change to backend directory
+      run: cd backend
     - name: Run tests
       run: |
-        python -m unittest discover backend/app/tests/ 
+        cd backend
+        python -m unittest discover app/tests/

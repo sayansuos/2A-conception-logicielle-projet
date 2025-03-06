@@ -44,7 +44,7 @@ async def get_items_names() -> List[str]:
 
 
 @item_router.get("/id_name/{item}")
-async def get_item_by_id(item: Union[int, str]) -> ItemDTO:
+async def get_item_by_id_or_name(item: Union[int, str]) -> ItemDTO:
     """
     Returns an item by its ID.
     """

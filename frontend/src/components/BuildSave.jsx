@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/BuildSave.css"; // Vous pouvez garder ce fichier CSS si nécessaire
+import "../styles/BuildSave.css";
 
 const BuildSave = () => {
   const [saveChampion, setSaveChampion] = useState("");
@@ -12,7 +12,6 @@ const BuildSave = () => {
   const [saveUser, setSaveUser] = useState("");
 
   const handleSearch = async () => {
-    // Vérifier que tous les champs sont remplis
     if (
       !saveChampion ||
       !saveItem1 ||
@@ -38,9 +37,7 @@ const BuildSave = () => {
 
       const url = `/api/build/create?${params.toString()}`;
 
-      // Faire la requête POST avec axios (les données sont envoyées dans le corps)
       const response = await axios.post(url, {
-        // Si nécessaire, tu peux envoyer des données dans le corps de la requête
         champion_name: saveChampion,
         item1_name: saveItem1,
         item2_name: saveItem2,
@@ -53,7 +50,6 @@ const BuildSave = () => {
       console.log("Build saved successfully:", response.data);
       alert("Build saved successfully!");
 
-      // Réinitialiser les champs du formulaire après l'envoi
       setSaveChampion("");
       setSaveItem1("");
       setSaveItem2("");

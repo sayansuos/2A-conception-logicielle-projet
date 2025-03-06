@@ -1,0 +1,18 @@
+[MASTER]
+init-hook='import sys; sys.path.append(".")'
+
+[MESSAGES CONTROL]
+# Désactiver les messages de docstring manquants
+disable=missing-module-docstring,missing-function-docstring
+
+[DESIGN]
+# Limiter la longueur des lignes
+max-line-length = 79
+
+[FORMAT]
+# Définir des noms de variables valides
+good-names = i,j,k,e,x,run,_
+
+[REPORTS]
+# Format de sortie
+output-format = text

@@ -29,7 +29,7 @@
   }
   
   .build-save input {
-    font-size: 0.9rem;  /* Réduction */
+    font-size: 0.9rem; 
     padding: 0.5rem;
     width: 100%;
     border-radius: 6px;
@@ -45,7 +45,7 @@
   }
   
   .build-save button {
-    font-size: 0.9rem;  /* Réduction */
+    font-size: 0.9rem; 
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #C89B3C, #A37D2E);
     border: none;
