@@ -62,5 +62,13 @@ L'application web sera disponible à :
 
 - ```http://localhost:8000``` ou accessible en permanence depuis : https://lol-app.kub.sspcloud.fr.
 
-# test 
-PYTHONPATH=./ pytest
+### 3. lancer les tests 
+
+Depuis la racine du projet, exécutez : 
+
+```
+cd frontend
+python3 -m unittest discover app/tests
+```
+
+Cela permettra d'exécuter les tests définis dans le répertoire backend/app/tests.
