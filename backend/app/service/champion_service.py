@@ -244,6 +244,27 @@ class ChampionService:
 
         return best_class
 
+    def lack_of(self, team: list) -> dict:
+        """
+        This method tells what a certain team need in terms of champion's
+        class (ex: Tanks, Mage, ...)
+        """
+        class_teammates = {
+            "Tank": 0,
+            "Mage": 0,
+            "Assassin": 0,
+            "Marksman": 0,
+            "Fighter": 0,
+            "Support": 0,
+        }
+
+        for champ in team:
+            class_teammates[champ.tags[0]] += 1
+            if len(champ.tags) > 1:
+                class_teammates[champ.tags[1]] += 0.5
+
+        return class_teammates
+
     def best_champs(
         self,
         role: str,
@@ -291,7 +312,13 @@ class ChampionService:
                 if est_dans is False:
                     available_champs.remove(champ)
 
-            return available_champs
+        lack_of = self.lack_of(team=teammates)
+
+        best_champs_in_order = sorted(
+            available_champs, key=lambda champ: lack_of[champ.tags[0]]
+        )
+
+        return best_champs_in_order
 
     def create_all_champs(self) -> bool:
         """
