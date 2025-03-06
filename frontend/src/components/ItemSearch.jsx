@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/ChampionSearch.css"; // On réutilise le même fichier CSS
+import "../styles/ItemSearch.css";
 import axios from "axios";
 
 const ItemSearch = ({ setItem }) => {
@@ -24,7 +24,7 @@ const ItemSearch = ({ setItem }) => {
   };
 
   return (
-    <div className="champion-search">  {/* Réutilisation du même style */}
+    <div className="item-search">  
       <label htmlFor="search-input">Find an Item :</label>
       <div className="search-container">
         <input

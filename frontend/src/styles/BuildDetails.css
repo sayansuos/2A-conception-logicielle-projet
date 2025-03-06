@@ -25,19 +25,11 @@
   width: 100%;
 }
 
-.build-content {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-}
-
 .card-content {
   display: flex;
-  flex-direction: row; /* Placer les éléments en ligne */
-  justify-content: centerleft; /* Alignement à gauche */
-  gap: 20px; /* Espacement entre le champion et les items */
+  flex-direction: row;
+  justify-content: center; 
+  gap: 20px;
   width: 100%;
   height: 700px;
   align-items: center;
@@ -45,9 +37,9 @@
 
 .items-container {
   display: flex;
-  flex-direction: column; /* Les items restent dans une colonne */
-  align-items: flex-start; /* Aligner les items à gauche */
-  gap: 55px; /* Espacement entre les items */
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 55px; 
 }
 
 .champion-container {
@@ -84,10 +76,14 @@
   top: 50%;
   transform: translateY(-50%) scale(0.7);
   border-radius: 8px; 
-  z-index: 1000; /* Assurer que le popup soit au premier plan */
+  z-index: 1000; 
 }
-
 
 .item-image {
   transform: scale(1);
+}
+
+.no-build{
+  justify-content: center;
+  align-items: center;
 }

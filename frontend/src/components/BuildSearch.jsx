@@ -15,9 +15,9 @@ const BuildSearch = ({ setBuild }) => {
     };
 
     fetchBuilds();
-  }, [setBuild]); // useEffect s'exécute quand `setBuild` change (au premier rendu)
+  }, [setBuild]);
 
-  return null; // On n'affiche rien puisque les builds sont gérés par `BuildDetails`
+  return null;
 };
 
 export default BuildSearch;

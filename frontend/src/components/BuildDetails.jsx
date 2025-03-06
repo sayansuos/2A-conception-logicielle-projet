@@ -22,7 +22,7 @@ const BuildDetails = ({ builds }) => {
               <ChampionDetails champion={build.champion} />
             </div>
 
-            {/* Affichage des items à droite du champion */}
+            {/* Affichage des items */}
             <div className="items-container">
               {["item1", "item2", "item3", "item4", "item5"].map((itemKey, itemIndex) => {
                 const item = build[itemKey];

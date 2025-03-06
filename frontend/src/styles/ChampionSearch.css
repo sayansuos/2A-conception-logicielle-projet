@@ -1,5 +1,5 @@
 .champion-search {
-  width: 30rem;  /* Réduction de la taille */
+  width: 30rem;  
   margin: 1.5rem auto;
   padding: 1rem;
   background: rgba(240, 230, 210, 0.85);
@@ -27,7 +27,7 @@
 }
 
 .champion-search input {
-  font-size: 0.9rem;  /* Réduction */
+  font-size: 0.9rem;
   padding: 0.5rem;
   width: 100%;
   border-radius: 6px;
@@ -43,7 +43,7 @@
 }
 
 .champion-search button {
-  font-size: 0.9rem;  /* Réduction */
+  font-size: 0.9rem; 
   padding: 0.5rem 1rem;
   background: linear-gradient(135deg, #C89B3C, #A37D2E);
   border: none;
