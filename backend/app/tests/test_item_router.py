@@ -1,3 +1,5 @@
+""" Test item_router"""
+
 import unittest
 from unittest.mock import patch
 
@@ -17,6 +19,7 @@ class TestItemRouter(unittest.IsolatedAsyncioTestCase):
         mock_get_item_by_id,
         mock_get_item_by_id_or_name,
     ):
+        """Tests retrieving an item by either ID or name."""
 
         mock_get_item_by_id_or_name.return_value = ItemDTO(
             name="Item 1",
