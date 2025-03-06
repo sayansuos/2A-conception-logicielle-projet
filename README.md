@@ -54,3 +54,6 @@ docker ps  # Vérifier que le conteneur tourne
 L'application web sera disponible à :
 
 - ```http://localhost:8000``` ou accessible en permanence depuis : https://lol-app.kub.sspcloud.fr.
+
+# test 
+PYTHONPATH=./ pytest
