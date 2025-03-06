@@ -12,22 +12,30 @@ En plus de ça, tu peux sauvegarder tes builds préférés pour chaque champion 
 
 1. Récupérez votre clé d'API Riot. Pour cela, allez à cette adresse : https://developer.riotgames.com, connectez vous ou créez un compte et générez une clé d'API.
 
-2. Depuis ```./backend```: créez le fichier ```.env.local``` et copiez y le contenu de ```.env.template```.
+2. Depuis ```./backend```: créez le fichier ```.env.local``` et copiez y le contenu de ```.env.template```. Modifiez la ligne suivante : **DATA_PWD=XXXX-XXXX-XXX** en remplaçant ```XXXX-XXXX-XXX```par votre propre clé d'API Riot.
 
-3. Modifiez la ligne suivante : **DATA_PWD=XXXX-XXXX-XXX** en remplaçant ```XXXX-XXXX-XXX```par votre propre clé d'API Riot.
+2. Depuis ```./frontend```: créez le fichier ```env``` et copiez y le contenu de ```.env.template```.
 
-## Lancer l'application en local avec Docker
+## Déployer l'application avec Kurbenetes
 
-### 1. Lancer l'API backend
+Le dossier ```./kurbenetes``` contient les scripts nécessaires pour le déploiement de l'application.
+
+- Un dossier backend correspondant au backend déployé sur le SSPCloud : https://lol.kub.sspcloud.fr/docs.
+- Un dossier frontend correspondant au frontend déployé sur le SSPCloud : https://lol-app.kub.sspcloud.fr.
+
+**Attention !** Si vous souhaitez vous même déployer l'application : 
 
 1. Depuis ```./kurbenetes/backend```: créez le fichier ```configmap.yaml``` et copiez y le contenu de ```configmap_template.yaml```.
 
 2. Renseignez ```DATA_PWD:``` avec votre propre clé API Riot.
 
-3. Depuis la racine du projet, exécutez : 
+## Lancer l'application en local avec Docker
+
+### 1. Lancer l'API backend
+
+Depuis la racine du projet, exécutez : 
 
 ```
-cd kurbenetes
 cd backend
 docker build -t backend-app .
 docker run -d --name backend-container -p 8000:8000 backend-app
@@ -44,7 +52,6 @@ L'API sera disponible à :
 Depuis la racine du projet, exécutez : 
 
 ```
-cd kurbenetes
 cd frontend
 docker build -t frontend-app .
 docker run -d -e VITE_API_URL=http://localhost:8000 --name frontend-container -p 8080:80 frontend-app
