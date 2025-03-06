@@ -1,0 +1,13 @@
+.best-champion-details {
+    text-align: center;
+    padding: 1rem;
+    width: 100rem;
+  }
+  
+  .champion-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+  }
