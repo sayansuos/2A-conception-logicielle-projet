@@ -17,31 +17,28 @@ const BestChampionSearch = ({ setBestChampion }) => {
     try {
       const params = new URLSearchParams();
 
-      // Ajout du rôle
       params.append("role", searchTermRole.trim());
 
-      // Séparation des teammates avec des virgules
+      // Pour séparer les champions par des virgules 
+
       if (searchTermTeam.trim()) {
         searchTermTeam.split(",").forEach(teammate =>
           params.append("teammates", teammate.trim())
         );
       }
 
-      // Séparation des ennemis avec des virgules
       if (searchTermEnnemy.trim()) {
         searchTermEnnemy.split(",").forEach(ennemy =>
           params.append("ennemies", ennemy.trim())
         );
       }
 
-      // Séparation des bans avec des virgules
       if (searchTermBan.trim()) {
         searchTermBan.split(",").forEach(ban =>
           params.append("bans", ban.trim())
         );
       }
 
-      // Envoi de la requête avec les paramètres
       const response = await axios.get(`/api/champion/besttoplay?${params.toString()}`);
       setBestChampion(response.data);
       console.log("✅ Best Champions:", response.data);
@@ -56,28 +53,24 @@ const BestChampionSearch = ({ setBestChampion }) => {
       <label htmlFor="search-input">Find the best champion to play :</label>
       <div className="search-container">
         <input
-          id="search-input-role"
           type="text"
           value={searchTermRole}
           onChange={(e) => setSearchTermRole(e.target.value)}
           placeholder="Type your role (TOP, JGL, MID, BOT or SUPP)"
         />
         <input
-          id="search-input-team"
           type="text"
           value={searchTermTeam}
           onChange={(e) => setSearchTermTeam(e.target.value)}
           placeholder="Champions picked by your team (separate with commas)"
         />
         <input
-          id="search-input-ennemy"
           type="text"
           value={searchTermEnnemy}
           onChange={(e) => setSearchTermEnnemy(e.target.value)}
           placeholder="Champions picked by the enemy team (separate with commas)"
         />
         <input
-          id="search-input-ban"
           type="text"
           value={searchTermBan}
           onChange={(e) => setSearchTermBan(e.target.value)}

@@ -1,6 +1,6 @@
 # League of Lilian
 
-Ce projet a été réalisé dans le cadre du cours de Conception de Logiciel de 2ème année à l'ENSAI.
+Ce projet a été réalisé dans le cadre du cours de Conception de Logiciel de 2ème année à l'ENSAI. Il utilise les données mises à disposition par Riot (https://developer.riotgames.com/docs/lol).
 
 ## Application
 
