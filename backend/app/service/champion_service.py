@@ -294,12 +294,7 @@ class ChampionService:
 
         direct_opponent = self.get_matchup(role, ennemies)
 
-        if isinstance(direct_opponent, str):
-            # The opponent did not pick yet.
-            return available_champs
-
-        else:
-            # You know who is your opponent.
+        if not isinstance(direct_opponent, str):
             best_classes_against = self.best_classes_against(
                 champ=direct_opponent[0]
             )
