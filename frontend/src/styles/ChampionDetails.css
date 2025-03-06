@@ -4,7 +4,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-  width: 450px; /* Augmentation de la largeur pour s'aligner avec la barre de recherche */
+  width: 30rem; /* Augmentation de la largeur pour s'aligner avec la barre de recherche */
   margin: 20px auto;
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.2);

@@ -36,7 +36,12 @@ class ChampionClient:
                 tags = raw_types[champ]["tags"]
                 stats = raw_types[champ]["stats"]
                 info = raw_types[champ]["info"]
-                image = self.__host_image + "/" + name + "_0.jpg"
+                image = (
+                    self.__host_image
+                    + "/"
+                    + name.replace(" ", "").replace("'", "")
+                    + "_0.jpg"
+                )
 
                 c = {
                     "name": name,

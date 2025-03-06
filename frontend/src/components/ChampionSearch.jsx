@@ -26,7 +26,7 @@ const ChampionSearch = ({ setChampion }) => {
 
   return (
     <div className="champion-search">
-      <label htmlFor="search-input">Find a champion :</label>
+      <label htmlFor="search-input">Find a Champion :</label>
       <div className="search-container">
         <input
           id="search-input"

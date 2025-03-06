@@ -1,12 +1,15 @@
-# React + Vite
+# League of Lilian
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet a été réalisé dans le cadre du cours de Conception de Logiciel de 2ème année à l'ENSAI. Il utilise les données mises à disposition par Riot (https://developer.riotgames.com/docs/lol).
 
-Currently, two official plugins are available:
+## Application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cette application est faite pour les joueurs de League of Legends qui veulent optimiser leurs choix de champions. L'idée est simple : tu précises les champions déjà choisis (alliés et ennemis), ceux qui sont bannis, et l'application te recommande le meilleur champion à jouer en fonction des synergies et des contres.
 
-## Expanding the ESLint configuration
+En plus de ça, tu peux sauvegarder tes builds préférés pour chaque champion et les retrouver facilement plus tard. Plus besoin de galérer à se souvenir de la meilleure combinaison d'objets, tout est stocké dans l'appli ! 🎮🔥
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Lancer l'application en local
+
+1. Installez les dépendances : ```npm install```
+
+2. Démarrer l'application web : ```npm run dev```. Elle sera disponible à : http://localhost:5173/.

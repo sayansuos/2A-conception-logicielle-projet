@@ -1,5 +1,14 @@
 {
     "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length", "79"]
+    "files.autoSave": "afterDelay",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+    },
+    "black-formatter.args": ["--line-length=79"],
+    "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+    }
 }

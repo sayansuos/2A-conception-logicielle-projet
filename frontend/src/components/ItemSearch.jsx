@@ -25,14 +25,14 @@ const ItemSearch = ({ setItem }) => {
 
   return (
     <div className="champion-search">  {/* Réutilisation du même style */}
-      <label htmlFor="search-input">Find an item :</label>
+      <label htmlFor="search-input">Find an Item :</label>
       <div className="search-container">
         <input
           id="search-input"
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Type an item's ID."
+          placeholder="Type an item's name."
         />
         <button id="search-button" onClick={handleSearch}>
           Search
