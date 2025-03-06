@@ -1,4 +1,4 @@
-""" Test champion_router """
+""" Test of champion_router """
 
 import unittest
 from unittest.mock import patch
